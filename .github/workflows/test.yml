@@ -89,12 +89,12 @@ jobs:
           touch $HOME/before-docker-created-file.txt
           docker run \
           --entrypoint "/bin/bash" \
-          --mount type=bind,source=/root,target=/home/ort,bind-propagation=rshared \
+          --mount type=bind,source=${HOME},target=/home/ort,bind-propagation=rshared \
           -u $(id -u):$(id -g) \
-          ghcr.io/oss-review-toolkit/ort:latest \
+          ghcr.io/oss-review-toolkit/ort-minimal:latest \
           -c "touch /home/ort/created-from-ort-docker-file.txt && ls -all /home/ort/"
           echo -e "\e[1;33m Printing contents of HOME... "
-          ls -all /root
+          ls -all $HOME
       # - name: Run Forgejo Action for ORT
       #   uses: tsteenbe/ort-ci-forgejo-action@3d24edeb62890b3958980782ca1b0f0cd31983e7
       #   with:
