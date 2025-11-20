@@ -20,8 +20,8 @@ jobs:
           cd $HOME
           touch test-home.txt
           ls -all
-      - name: Checkout project
-        uses: actions/checkout@v5
+      # - name: Checkout project
+      #   uses: actions/checkout@v5
       - name: Show GITHUB_WORSPACE workspace
         shell: bash
         run: |
@@ -29,27 +29,27 @@ jobs:
           echo $(whoami)
           echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
           ls -all $GITHUB_WORKSPACE
-      - name: Ensure Git is installed
-        run: |
-          if ! command -v git &> /dev/null; then
-            # Ensure sudo is installed
-            if ! command -v sudo &> /dev/null; then
-                echo "Sudo is not installed. Installing now..."
-                apt-get update
-                apt-get install -y sudo
-            fi
+      # - name: Ensure Git is installed
+      #   run: |
+      #     if ! command -v git &> /dev/null; then
+      #       # Ensure sudo is installed
+      #       if ! command -v sudo &> /dev/null; then
+      #           echo "Sudo is not installed. Installing now..."
+      #           apt-get update
+      #           apt-get install -y sudo
+      #       fi
 
-            echo "Git not found, installing..."
-            sudo apt-get update
-            sudo apt-get install -y git
-          else
-            echo "Git is already installed."
-          fi
-      - name: Show Git version
-        shell: bash
-        run: |
-          echo -e "\e[1;33m Show version of Git... "
-          git -v
+      #       echo "Git not found, installing..."
+      #       sudo apt-get update
+      #       sudo apt-get install -y git
+      #     else
+      #       echo "Git is already installed."
+      #     fi
+      # - name: Show Git version
+      #   shell: bash
+      #   run: |
+      #     echo -e "\e[1;33m Show version of Git... "
+      #     git -v
       # - name: Ensure Docker is installed
       #   run: |
       #     if [[ "$(lsb_release -is)" != "Ubuntu" ]]; then
@@ -82,7 +82,7 @@ jobs:
       #   shell: bash
       #   run: |
       #     docker image prune -af
-      - name: Run ORT, print its version and write to file
+      - name: Run ORT docker and write to file
         shell: bash
         run: |
           echo -e "\e[1;33m Debugging why Docker is not properly mounting any dir... "
