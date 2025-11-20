@@ -7,8 +7,8 @@ on:
 jobs:
   ort:
     runs-on: ubuntu-latest
-    # container:
-    #   image: ghcr.io/tsteenbe/node-docker:latest # Or use catthehacker/ubuntu:act-latest
+    container:
+      image: ghcr.io/tsteenbe/node-docker:latest # Or use catthehacker/ubuntu:act-latest
     # container:
     #   image: ghcr.io/alex3305/forgejo-runner-dind:11.3.1-dind-28
     steps:
